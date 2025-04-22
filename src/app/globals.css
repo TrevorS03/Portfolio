@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -19,8 +20,119 @@
   }
 }
 
+html {
+  font-family: "Jersey 20", sans-serif;
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.home-content h1 {
+  opacity: 0;
+  color: white;
+  font-size: 5rem;
+  animation: fadeInLeft 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+.home-content h2 {
+  opacity: 0;
+  padding-left: 50px;
+  color: white;
+  font-size: 5rem;
+  animation: fadeInRight 1s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.home-content p{
+  color: white;
+  font-size: 1.5rem;
+}
+
+.about{
+  display: flex;
+  flex-direction: row;
+}
+
+.about-image img{
+  margin: auto;
+  border-radius: 50%;
+}
+
+.about-content{
+  background-color: #171717;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-items: center;
+  height: 50vh;
+}
+
+.about-content h2{
+  color: white;
+  font-size: 3rem;
+}
+
+.about-content p{
+  color: white;
+  font-size: 1.5rem;
+}
+
+.projects{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.projects-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.projects h2{
+  color: white;
+  font-size: 3rem;
 }
