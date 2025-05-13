@@ -21,20 +21,29 @@
 }
 
 html {
+  top: 0;
+  background-color: #121111;
+  background-image: url('/topography.svg'); /* Corrected path */
+  background-repeat: repeat; /* Ensures the image tiles */
+  background-size: 45%; /* Keeps the original size of the SVG */
   font-family: "Jersey 20", sans-serif;
   scroll-behavior: smooth;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Ensure consistent box model */
 }
 
 body {
-  background: var(--background);
+  backdrop-filter: blur(3px);
   color: var(--foreground);
+  padding-top: 60px; /* Add padding equal to the navbar's height */
 }
 
 .home-content{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
   animation: fadeIn 1s ease-in-out;
 }
 
