@@ -1,39 +1,21 @@
-.project{
+.projectList {
+    box-shadow: 0px 20px 50px -15px #e3b18d15;
     display: flex;
-    flex-direction: column;
-    background-color: #8b8b8bf1;
-    height: fit-content;
-    width: fit-content;
-    color: black;
-    place-content: center;
-    text-align: center;
-    padding: 0;
-    transition: 0.3s;
+    justify-content: flex-start; /* Align items to the start */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    background: linear-gradient(to bottom, #1e3b8a0c, #f974160e); /* Blue and orange gradient */
+    padding: 20px; /* Adjust padding for better spacing */
+    border-radius: 20px;
+    animation: fadeIn 1s ease-in-out;
+    transition: all .35s ease;
+    width: max-content; /* Full width for scrolling */
+    gap: 20px; /* Add spacing between projects */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Optional border for better visibility */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    margin: 15px;
 }
 
-.project:hover{
-    cursor: pointer;
-    transform: scale(1.025);
-    background-color: #8b8b8b;
+.project {
+    flex: 0 0 auto; /* Prevent shrinking and set fixed width for each project */
+    width: 1200px; /* Adjust width as needed */
 }
-
-.projectTitle{
-    text-align: left;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.projectInfo{
-    padding: 5px 2rem;
-    font-weight: 400;
-    color: #00000099;
-}
-
-.projectImage{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 200;
-    object-fit: cover;
-}
-

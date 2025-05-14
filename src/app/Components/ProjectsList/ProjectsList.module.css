@@ -1,0 +1,23 @@
+.projectList {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 2rem;
+    align-items: center;
+    margin: 15px;
+  color: white;
+  background-color: #1717174a;
+}
+
+.projectList::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
