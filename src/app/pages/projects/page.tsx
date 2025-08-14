@@ -8,7 +8,7 @@ import ProjectsList from '@/app/Components/ProjectsList/ProjectsList';
 const Resume = () => {
     return (
       <section id="about" className={Styles.projects}>
-        <h1>Projects I've worked on</h1>
+        <h1>Projects I have worked on</h1>
         <span>
             Here are some of the projects I have worked on. Each project
             showcases my skills and creativity in web and game dev.
