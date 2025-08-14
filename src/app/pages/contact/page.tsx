@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react';
-import Styles from './page.module.css';
 import Image from "next/image";
 
 

@@ -7,6 +7,7 @@
     margin: 15px;
   color: white;
   background-color: #1717174a;
+  border-radius: 25px;
 }
 
 .projectList::before {
@@ -18,6 +19,11 @@
   bottom: 0;
   background-color: inherit;
   z-index: -1;
-  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
+}
+
+.relavantSkills img {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
 }

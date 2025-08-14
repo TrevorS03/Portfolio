@@ -7,16 +7,16 @@ import ProjectsList from '@/app/Components/ProjectsList/ProjectsList';
 
 const Resume = () => {
     return (
-<section id="about" className="about">
-  <div className={Styles.projectsContent}>
-    <h2>My Projects</h2>
-    <p>
-      Here are some of the projects I have worked on. Each project
-      showcases my skills and creativity in web development.
-          </p>
-      <ProjectsList />
-  </div>
-</section>
+      <section id="about" className={Styles.projects}>
+        <h1>Projects I've worked on</h1>
+        <span>
+            Here are some of the projects I have worked on. Each project
+            showcases my skills and creativity in web and game dev.
+        </span>
+        <div className={Styles.projectsContent}>
+            <ProjectsList />
+        </div>
+      </section>
     );
 };
 

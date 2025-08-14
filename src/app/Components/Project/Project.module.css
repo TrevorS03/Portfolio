@@ -4,18 +4,31 @@
     justify-content: flex-start; /* Align items to the start */
     overflow-x: auto; /* Enable horizontal scrolling */
     background: linear-gradient(to bottom, #1e3b8a0c, #f974160e); /* Blue and orange gradient */
-    padding: 20px; /* Adjust padding for better spacing */
+    padding: 20px 0px; /* Adjust padding for better spacing */
     border-radius: 20px;
     animation: fadeIn 1s ease-in-out;
     transition: all .35s ease;
-    width: max-content; /* Full width for scrolling */
+    width: 1/3vh; /* Full width for scrolling */
     gap: 20px; /* Add spacing between projects */
     border: 1px solid rgba(255, 255, 255, 0.1); /* Optional border for better visibility */
     scroll-behavior: smooth; /* Smooth scrolling */
     margin: 15px;
+    justify-content: center;
 }
 
 .project {
     flex: 0 0 auto; /* Prevent shrinking and set fixed width for each project */
-    width: 1200px; /* Adjust width as needed */
+}
+
+.projectList:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.25);
+}
+
+.projectImage{
+    width: 30%;
+    height: auto;
+    justify-content: left;
+    border-radius: 20px;
+    transition: all .35s ease;
 }
