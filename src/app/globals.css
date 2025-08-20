@@ -43,7 +43,6 @@ body {
 }
 
 body {
-  backdrop-filter: blur(0px);
   color: var(--foreground);
   padding-top: 60px; /* Add padding equal to the navbar's height */
 }
