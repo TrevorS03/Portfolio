@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link'; // Import Link for navigation
 import { useRouter } from 'next/navigation';
-import Styles from './NavBar.module.css';
+import Styles from './Footer.module.css';
 
 const NavBar = () => {
     const router = useRouter();

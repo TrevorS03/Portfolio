@@ -21,145 +21,48 @@
 }
 
 html {
-  font-family: "Jersey 20", sans-serif;
+  top: 0;
+  background-color: #1d1c1c;
+  background-image: url('/topography.svg'); /* Corrected path */
+  background-repeat: repeat; /* Ensures the image tiles */
+  background-size: 45%; /* Keeps the original size of the SVG */
   scroll-behavior: smooth;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Ensure consistent box model */
+}
+
+
+body {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: 'Jersey 20', sans-serif; /* Use the imported font */
+  background-color: rgba(0, 0, 0, 0.77); /* Semi-transparent background */;
+  color: var(--foreground);
+  line-height: 1.5;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
+  padding-top: 60px; /* Add padding equal to the navbar's height */
 }
 
-.home-content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  animation: fadeIn 1s ease-in-out;
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
 }
 
-.home-content h1 {
-  opacity: 0;
-  color: white;
-  font-size: 5rem;
-  animation: fadeInLeft 1s ease-in-out forwards;
-  animation-delay: 0.5s;
-}
-
-.home-content h2 {
-  opacity: 0;
-  padding-left: 50px;
-  color: white;
-  font-size: 5rem;
-  animation: fadeInRight 1s ease-in-out forwards;
-  animation-delay: 1s;
-}
-
-
-@keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-.home-content p{
-  color: white;
-  font-size: 1.5rem;
-}
-
-.about{
-  display: flex;
-  flex-direction: row;
-}
-
-.about-image img{
-  margin: auto;
-  border-radius: 50%;
-}
-
-.about-content{
-  background-color: #171717;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  align-items: center;
-  height: 50vh;
-}
-
-.about-content h2{
-  color: white;
-  font-size: 3rem;
-}
-
-.about-content p{
-  color: white;
-  font-size: 1.5rem;
-}
-
-.projects{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.projects-content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  height: 90vh;
-  gap: 2rem;
-}
-
-.projects-content h1{
-  color: white;
-  padding: 0%;
-  margin: 0;
-  font-size: 3rem;
-}
-
-.projects p{
-  color: white;
-  font-size: 1.5rem;
-  max-width: 600px;
-  text-align: center;
-}
-
-.projects h1{
-  color: white;
-  font-size: 3rem;
-
-}
-
-.projects-list{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
-}
-
-.projects h2{
-  color: white;
-  font-size: 3rem;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
 }
