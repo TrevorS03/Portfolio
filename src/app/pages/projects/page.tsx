@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import Styles from './projects.module.css'
+import Image from 'next/image' // ← Fixed: required import
+import styles from './projects.module.css'
 
 // Pre-made projects with links
 const projects = [
@@ -10,32 +11,31 @@ const projects = [
     description:
       'The website you are on right now, showcasing my development projects and skills.',
     image: 'https://placehold.co/600x400?text=Portfolio+Website',
-    link: '/', // or your live site URL, e.g. 'https://yourname.dev'
+    link: '/',
   },
   {
     title: 'Boiler Room',
     description:
       'A Steam-based game recommendation website which uses the Steam API to link games and account info into an easy-to-digest format.',
     image: 'https://placehold.co/600x400?text=Boiler+Room',
-    link: 'https://github.com/yourusername/boiler-room', // ← replace with your actual repo or live demo
+    link: 'https://github.com/yourusername/boiler-room',
   },
   {
     title: 'Fih Game',
     description: 'A relaxing multiplayer fishing game built in Unity with C# scripting.',
     image: 'https://placehold.co/600x400?text=Fih+Game',
-    link: 'https://github.com/yourusername/fih-game', // ← replace with GitHub / Itch.io / demo link
+    link: 'https://github.com/yourusername/fih-game',
   },
   {
     title: 'Special Interest Project',
     description:
       'A short platformer game a small group and I made for our high school programming class.',
     image: 'https://placehold.co/600x400?text=Special+Interest+Project',
-    link: 'https://trevtrev.itch.io/special-interest-project', // ← replace with actual link
+    link: 'https://trevtrev.itch.io/special-interest-project',
   },
 ]
 
-const Projects = () => {
-  // ← renamed component to Projects (more semantic than Resume)
+export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const prevProject = () => {
@@ -49,36 +49,43 @@ const Projects = () => {
   const currentProject = projects[currentIndex]
 
   return (
-    <section id='projects' className={Styles.projects}>
-      {' '}
-      {/* changed id to "projects" */}
-      <h1>Projects I Have Worked On</h1>
-      <span>
+    <section id='projects' className={styles.projects}>
+      <h1 className={styles.sectionTitle}>Projects I Have Worked On</h1>
+
+      <p className={styles.sectionDesc}>
         Here are some of the projects I have worked on. Each project showcases my skills
         and creativity in web and game development.
-      </span>
-      <div className={Styles.carousel}>
-        <button className={Styles.arrow} onClick={prevProject}>
-          &lt;
+      </p>
+
+      <div className={styles.carousel}>
+        <button
+          className={styles.arrow}
+          onClick={prevProject}
+          aria-label='Previous project'
+        >
+          ←
         </button>
 
-        <div className={Styles.projectCardWrapper}>
+        <div className={styles.projectCardWrapper}>
           <a
             href={currentProject.link}
             target='_blank'
             rel='noopener noreferrer'
-            className={Styles.projectCardLink} // optional class for extra styling if needed
+            className={styles.projectCardLink}
+            aria-label={`View ${currentProject.title} project`}
           >
-            <div className={Styles.projectCard}>
-              {currentProject.image && (
-                <img
-                  src={currentProject.image}
-                  alt={currentProject.title}
-                  loading='lazy' // good for performance
-                />
-              )}
+            <div className={styles.projectCard}>
+              <Image
+                src={currentProject.image}
+                alt={`Screenshot of ${currentProject.title}`}
+                width={600}
+                height={400}
+                sizes='(max-width: 768px) 90vw, 600px'
+                className={styles.projectImage}
+                priority={currentIndex === 0} // optional: prioritize first image
+              />
 
-              <div className={Styles.projectCardOverlay}>
+              <div className={styles.projectCardOverlay}>
                 <h3>{currentProject.title}</h3>
                 <p>{currentProject.description}</p>
               </div>
@@ -86,12 +93,22 @@ const Projects = () => {
           </a>
         </div>
 
-        <button className={Styles.arrow} onClick={nextProject}>
-          &gt;
+        <button className={styles.arrow} onClick={nextProject} aria-label='Next project'>
+          →
         </button>
+      </div>
+
+      {/* Optional: show current position */}
+      <div className={styles.indicators}>
+        {projects.map((_, idx) => (
+          <button
+            key={idx}
+            className={`${styles.dot} ${idx === currentIndex ? styles.active : ''}`}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to project ${idx + 1}`}
+          />
+        ))}
       </div>
     </section>
   )
 }
-
-export default Projects
