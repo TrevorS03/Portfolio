@@ -19,7 +19,7 @@ const Resume = () => {
 
         {/* Optional fallback / download hint */}
         <p className={styles.fallback}>
-          Can't see the preview?{' '}
+          Do you not see the preview?{' '}
           <a href='/resume.pdf' download className={styles.downloadLink}>
             Download PDF
           </a>
