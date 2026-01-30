@@ -7,7 +7,7 @@ export default function HomePage() {
       <section id='home' className={Styles.home}>
         <div className={Styles.homeContent}>
           <h1>Hello!</h1>
-          <h2>I'm Trevor Small.</h2>
+          <h2>{`I'm Trevor Small.`}</h2>
           <div className={Styles.buttonContainer}>
             <Link href='/pages/about' className={Styles.moreButton}>
               About Me
