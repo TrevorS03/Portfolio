@@ -1,175 +1,206 @@
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 155px 5px 220px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12vh 5px 0 0;
 }
 
+/* GLASS PANEL */
 .homeContent {
-    box-shadow: 0px 20px 50px -15px #e3b18d15;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(to bottom, #1e3b8a0c, #f9741600);
-    padding: 50px;
-    border-radius: 20px;
-    animation: fadeIn 1s ease-in-out;
-    transition: all 0.35s ease;
-    width: 100%;
-    max-width: 1250px;
-    flex-wrap: wrap;
-    scale: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  max-width: 1250px;
+  padding: 50px;
+
+background: linear-gradient(
+  to right,
+  rgba(0, 68, 255, 0.18),
+  rgba(249, 116, 22, 0.22)
+);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.25),
+    0 25px 60px -20px rgba(0, 0, 0, 0.45);
+
+  animation: fadeIn 0.8s ease forwards;
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+position: relative;
+overflow: hidden;
 }
+
+.homeContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.4)
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 
 .homeContent:hover {
-    transform: translateY(-5px);
-    filter: brightness(1.25);
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.1);
 }
 
-.homeContent h1, .homeContent h2 {
-    margin: 0;
-    text-align: center;
-    color: white;
+/* HEADINGS */
+.homeContent h1,
+.homeContent h2 {
+  margin: 0;
+  color: white;
+  opacity: 0;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+
 }
 
 .homeContent h1 {
-    cursor: default;
-    opacity: 0;
-    font-size: 4rem;
-    animation: fadeInLeft 1s ease-in-out forwards;
+ margin-bottom: 5px;
+  font-size: 4rem;
+  animation: fadeInLeft 0.8s ease forwards;
 }
 
 .homeContent h2 {
-    cursor: pointer;
-    opacity: 0;
-    font-size: 3rem;
-    animation: fadeInRight 1s ease-in-out forwards;
+     margin-bottom: 5px;
+  font-size: 3rem;
+  animation: fadeInRight 0.8s ease forwards;
+  cursor: pointer;
 }
 
+/* BUTTONS */
 .buttonContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.moreButton,
+.LinkedIn {
+  opacity: 0;
+  animation: buttonPopup 0.9s ease forwards 0.8s;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .moreButton {
-    background: linear-gradient(to bottom, #8a7a1e0c, #f1782108);
-    border-top: 3px solid rgba(244, 172, 70, 0.017);
-    border-bottom: 2px solid rgba(240, 115, 6, 0);
-    color: rgb(194, 194, 194);
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    opacity: 0;
-    animation: buttonPopup 1s ease-in-out forwards;
-    animation-delay: 1s;
-    transition: all 0.35s ease-out;
+  padding: 6px 12px;
+  font-size: 1.5rem;
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.4),
+    inset 0 -2px 4px rgba(0,0,0,0.25),
+    0 4px 12px rgba(0,0,0,0.25);
 }
 
 .LinkedIn {
-    height: 50px;
-    width: auto;
-    padding: 5px;
-    opacity: 0;
-    animation: buttonPopup 1s ease-in-out forwards;
-    animation-delay: 1s;
-    transition: all 0.35s ease-out;
+  height: 50px;
 }
 
-.moreButton:hover, .LinkedIn:hover {
-    background-color: #ffffff33;
-    transform: translateY(-5px);
-    color: rgb(255, 255, 255);
+.LinkedIn:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
 }
-
+.moreButton:hover {
+    background: rgba(255,255,255,0.18);
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,0.5),
+    0 8px 20px rgba(0,0,0,0.35);
+}
+/* SKILLS */
 .skillsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+   margin-bottom: 10px;
 }
 
 .skillsContainer h2 {
-    cursor: default;
-    opacity: 0;
-    color: white;
-    font-size: 1.5rem;
-    animation: fadeInLeft 1s ease-in-out forwards;
-    animation-delay: 0.5s;
+  color: white;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease forwards 0.4s;
 }
 
 .skillsIcons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 .skillsIcons img {
-    width: 50px;
-    height: 50px;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
-    animation-delay: 0.7s;
-    transition: transform 0.3s ease;
+  width: 50px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 0.6s;
+  transition: transform 0.3s ease;
+    padding: 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(4px);
 }
 
 .skillsIcons img:hover {
-    transform: scale(1.1);
+  transform: scale(1.12);
+  background: rgba(255,255,255,0.12);
+  
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes buttonPopup {
-    0% {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-    50% {
-        scale: 1.05;
-        opacity: 0.15;
-    }
-    80% {
-        transform: translateY(-15px);
-    }
-    100% {
-        scale: 1;
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

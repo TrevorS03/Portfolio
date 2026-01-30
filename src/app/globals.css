@@ -24,7 +24,7 @@ html {
   top: 0;
   background-color: #1d1c1c;
   background-image: url('/topography.svg'); /* Corrected path */
-  background-repeat: repeat; /* Ensures the image tiles */
+  background-repeat: fasdsa; /* Ensures the image tiles */
   background-size: 45%; /* Keeps the original size of the SVG */
   scroll-behavior: smooth;
   margin: 0; /* Remove default margin */
@@ -37,8 +37,12 @@ body {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
   font-family: 'Jersey 20', sans-serif; /* Use the imported font */
-  background-color: rgba(0, 0, 0, 0.77); /* Semi-transparent background */;
   color: var(--foreground);
+    background: linear-gradient(
+    135deg,
+    rgba(0, 68, 255, 0.12),
+    rgba(249, 116, 22, 0.15)
+  ); /* Matches your home gradient vibe – adjust colors if needed */
   line-height: 1.5;
 }
 

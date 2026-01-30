@@ -1,14 +1,32 @@
 'use client'
 
-import React from 'react';
-import Styles from './page.module.css';
+import React from 'react'
+import styles from './page.module.css'
 
 const Resume = () => {
-    return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <embed src="/resume.pdf" width="800px" height="1100px" className={Styles.resume}/>
-        </div>
-    );
-};
+  return (
+    <main className={styles.resumePage}>
+      <div className={styles.resumeContent}>
+        <h1 className={styles.title}>My Resume</h1>
 
-export default Resume;
+        <div className={styles.pdfWrapper}>
+          <iframe
+            src='/resume.pdf'
+            className={styles.pdfViewer}
+            title='Trevor Small - Resume'
+          />
+        </div>
+
+        {/* Optional fallback / download hint */}
+        <p className={styles.fallback}>
+          Can't see the preview?{' '}
+          <a href='/resume.pdf' download className={styles.downloadLink}>
+            Download PDF
+          </a>
+        </p>
+      </div>
+    </main>
+  )
+}
+
+export default Resume

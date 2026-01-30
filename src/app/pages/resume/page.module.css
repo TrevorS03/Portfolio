@@ -1,10 +1,136 @@
-.resume{
-    height: 100vh;
-    margin-top: 4%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 27.5%;
-    padding: 20px;
+.resumePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10vh 1rem 4rem;
+}
+
+.resumeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  max-width: 980px;          /* Slightly narrower than home for focus */
+  padding: 45px 35px;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 68, 255, 0.16),
+    rgba(249, 116, 22, 0.20)
+  );
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -5px 14px rgba(0, 0, 0, 0.28),
+    0 28px 65px -22px rgba(0, 0, 0, 0.48);
+
+  animation: fadeIn 0.9s ease forwards;
+  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.resumeContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    125deg,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.38)
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.resumeContent:hover {
+  transform: translateY(-8px) scale(1.015);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 1px 4px rgba(255, 255, 255, 0.55),
+    0 35px 80px -25px rgba(0, 0, 0, 0.55);
+}
+
+/* PDF viewer wrapper + glass effect on the frame itself */
+.pdfWrapper {
+  width: 100%;
+  max-width: 850px;
+  margin: 30px 0 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pdfWrapper:hover {
+  transform: scale(1.01);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+}
+
+.pdfViewer {
+  width: 100%;
+  height: 92vh;              /* Almost full height, adjust as needed */
+  border: none;
+  border-radius: 16px;
+}
+
+/* Title */
+.title {
+  margin: 0 0 12px;
+  color: white;
+  font-size: 3.6rem;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.65);
+  opacity: 0;
+  animation: fadeInLeft 1s ease forwards 0.2s;
+}
+
+/* Fallback text + link */
+.fallback {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.6s;
+}
+
+.downloadLink {
+  color: rgb(220, 220, 255);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.downloadLink:hover {
+  color: white;
+}
+
+/* Re-use your existing animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-70px); }
+  to { opacity: 1; transform: translateX(0); }
 }
