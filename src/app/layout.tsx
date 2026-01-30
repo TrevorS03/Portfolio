@@ -14,6 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <link
+        href='https://fonts.googleapis.com/css2?family=Jersey+20&display=swap'
+        rel='stylesheet'
+      />
       <NavBar />
       <body>{children}</body>
     </html>

@@ -31,11 +31,6 @@ const NavBar = () => {
           </Link>
         </li>
         <li className={Styles.navItem}>
-          <Link href='/pages/contact' className={Styles.navLink}>
-            Contact
-          </Link>
-        </li>
-        <li className={Styles.navItem}>
           <Link href='/pages/resume' className={Styles.navLink}>
             Resume
           </Link>

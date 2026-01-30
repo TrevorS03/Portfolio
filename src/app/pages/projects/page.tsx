@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image' // ← Fixed: required import
+import Image from 'next/image'
 import styles from './projects.module.css'
 
 // Pre-made projects with links
@@ -18,7 +18,7 @@ const projects = [
     description:
       'A Steam-based game recommendation website which uses the Steam API to link games and account info into an easy-to-digest format.',
     image: 'https://placehold.co/600x400?text=Boiler+Room',
-    link: 'https://github.com/yourusername/boiler-room',
+    link: 'https://github.com/COSC481W-2025Winter/Boiler-Room',
   },
   {
     title: 'Fih Game',
