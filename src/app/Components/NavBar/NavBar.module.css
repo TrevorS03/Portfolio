@@ -7,8 +7,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1250px;
-  height: 60px;
+  max-width: 650px;
+  height: 50px;
   padding: 0.5rem 1rem;
 
   background: rgba(255, 255, 255, 0.08);

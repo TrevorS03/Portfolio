@@ -26,11 +26,6 @@ const NavBar = () => {
           </Link>
         </li>
         <li className={Styles.navItem}>
-          <Link href='/pages/about' className={Styles.navLink}>
-            About
-          </Link>
-        </li>
-        <li className={Styles.navItem}>
           <Link href='/pages/resume' className={Styles.navLink}>
             Resume
           </Link>

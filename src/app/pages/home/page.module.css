@@ -1,31 +1,86 @@
+/* ===================== GLOBAL / HOME SECTION ===================== */
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12vh 5px 0 0;
+  padding: 8vh 5px 0 0;
 }
 
-/* GLASS PANEL */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* text wider than image */
+  grid-template-rows: auto auto;     /* 2 rows */
+  gap: 32px 28px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.homeContent {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.imageCard {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.textCard {
+  grid-column: 1 / 3; /* FULL WIDTH */
+  grid-row: 2 / 3;
+}
+
+
+.imageContainer {
+  margin: auto;
+}
+
+@media (max-width: 900px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .homeContent { grid-column: 1; grid-row: 1; }
+  .aboutCard:nth-of-type(1) { grid-column: 1; grid-row: 2; }
+  .aboutCard:nth-of-type(2) { grid-column: 1; grid-row: 3; }
+}
+
+
+/* ===================== SHARED GLASS CARD BASE ===================== */
+.homeContent,
+.aboutCard {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.homeContent:hover,
+.aboutCard:hover {
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+/* ===================== HOME CARD ===================== */
 .homeContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  width: 100%;
-  max-width: 1250px;
   padding: 50px;
 
-background: linear-gradient(
-  to right,
-  rgba(0, 68, 255, 0.18),
-  rgba(249, 116, 22, 0.22)
-);
-
+  background: linear-gradient(to right, rgba(0, 68, 255, 0.18), rgba(249, 116, 22, 0.22));
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-
-  border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.25);
 
   box-shadow:
@@ -34,67 +89,37 @@ background: linear-gradient(
     0 25px 60px -20px rgba(0, 0, 0, 0.45);
 
   animation: fadeIn 0.8s ease forwards;
-  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
-position: relative;
-overflow: hidden;
 }
 
-.homeContent::before {
+.homeContent::before,
+.aboutCard::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0.6),
-    rgba(255,255,255,0.1),
-    rgba(255,255,255,0.4)
-  );
-  -webkit-mask: 
-    linear-gradient(#000 0 0) content-box, 
-    linear-gradient(#000 0 0);
+  background: linear-gradient(120deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1), rgba(255,255,255,0.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
   opacity: 0.5;
 }
 
-
-.homeContent:hover {
-  transform: translateY(-6px) scale(1.02);
-  filter: brightness(1.1);
-}
-
-/* HEADINGS */
+/* ===================== HEADINGS ===================== */
 .homeContent h1,
 .homeContent h2 {
   margin: 0;
   color: white;
   opacity: 0;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
-.homeContent h1 {
- margin-bottom: 5px;
-  font-size: 4rem;
-  animation: fadeInLeft 0.8s ease forwards;
-}
+.homeContent h1 { font-size: 4rem; animation: fadeInLeft 0.8s ease forwards; }
+.homeContent h2 { font-size: 3rem; animation: fadeInRight 0.8s ease forwards; }
 
-.homeContent h2 {
-     margin-bottom: 5px;
-  font-size: 3rem;
-  animation: fadeInRight 0.8s ease forwards;
-  cursor: pointer;
-}
-
-/* BUTTONS */
-.buttonContainer {
-  display: flex;
-  gap: 15px;
-  margin: 20px 0;
-}
+/* ===================== BUTTONS ===================== */
+.buttonContainer { display: flex; gap: 15px; margin: 20px 0; }
 
 .moreButton,
 .LinkedIn {
@@ -109,98 +134,116 @@ overflow: hidden;
   color: rgb(210, 210, 210);
   text-decoration: none;
   border-radius: 8px;
-
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    inset 0 1px 2px rgba(255,255,255,0.4),
-    inset 0 -2px 4px rgba(0,0,0,0.25),
-    0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.25);
 }
 
-.LinkedIn {
-  height: 50px;
-}
+.LinkedIn { height: 50px; }
+.LinkedIn:hover { transform: translateY(-5px); background: rgba(255,255,255,0.18); color: white; }
+.moreButton:hover { background: rgba(255,255,255,0.18); box-shadow: inset 0 1px 3px rgba(255,255,255,0.5), 0 8px 20px rgba(0,0,0,0.35); }
 
-.LinkedIn:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.18);
-  color: white;
-}
-.moreButton:hover {
-    background: rgba(255,255,255,0.18);
-  box-shadow:
-    inset 0 1px 3px rgba(255,255,255,0.5),
-    0 8px 20px rgba(0,0,0,0.35);
-}
-/* SKILLS */
-.skillsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-top: 20px;
-   margin-bottom: 10px;
-}
+/* ===================== SKILLS ===================== */
+.skillsContainer { display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 20px 0 10px; }
+.skillsContainer h2 { color: white; font-size: 1.5rem; opacity: 0; animation: fadeInLeft 0.8s ease forwards 0.4s; }
 
-.skillsContainer h2 {
-  color: white;
-  font-size: 1.5rem;
-  opacity: 0;
-  animation: fadeInLeft 0.8s ease forwards 0.4s;
-}
-
-.skillsIcons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
+.skillsIcons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
 .skillsIcons img {
   width: 50px;
   opacity: 0;
   animation: fadeIn 0.8s ease forwards 0.6s;
   transition: transform 0.3s ease;
-    padding: 6px;
+  padding: 6px;
   border-radius: 10px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(4px);
 }
+.skillsIcons img:hover { transform: scale(1.12); background: rgba(255,255,255,0.12); }
 
-.skillsIcons img:hover {
-  transform: scale(1.12);
-  background: rgba(255,255,255,0.12);
-  
+/* ===================== ABOUT SECTION ===================== */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  width: 100%;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.about h1 {
+  font-size: clamp(2.4rem, 6vw, 3.2rem);
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  padding: 1.2rem 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
 }
 
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-60px); }
-  to { opacity: 1; transform: translateX(0); }
+/* ABOUT CARD */
+.aboutCard {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 50px;
+
+  background: linear-gradient(to bottom right, rgba(40,40,50,0.28), rgba(20,20,30,0.22));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.18);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.35),
+    inset 0 -4px 12px rgba(0,0,0,0.4),
+    0 25px 60px -20px rgba(0,0,0,0.55);
+
+  animation: fadeIn 1.3s ease-out forwards;
 }
 
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(60px); }
-  to { opacity: 1; transform: translateX(0); }
+.imageContainer { flex: 0 0 clamp(140px, 22%, 220px); }
+.imageContainer img {
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.22);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.imageContainer img:hover { transform: scale(1.07); box-shadow: 0 16px 45px rgba(0,0,0,0.6); }
+
+/* TEXT FIX */
+.aboutText {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.75;
+  color: rgba(235,235,245,0.94);
+  text-align: left;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
 }
 
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 860px) {
+  .aboutCard { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .imageContainer { width: 160px; }
+  .aboutText { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .about { padding: 40px 16px; }
+  .aboutCard { padding: 32px 20px; }
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: translateY(0);} }
+@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-60px);} to { opacity: 1; transform: translateX(0);} }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(60px);} to { opacity: 1; transform: translateX(0);} }
 @keyframes buttonPopup {
-  0% {
-    opacity: 0;
-    transform: translateY(60px) scale(0.95);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-8px) scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  0% { opacity: 0; transform: translateY(60px) scale(0.95);}
+  60% { opacity: 1; transform: translateY(-8px) scale(1.05);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
 }
