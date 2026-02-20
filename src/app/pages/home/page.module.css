@@ -1,4 +1,12 @@
-/* ===================== GLOBAL / HOME SECTION ===================== */
+:root {
+  --grid-columns: 1.2fr 0.8fr;
+  --grid-gap-x: 28px;
+  --grid-gap-y: 32px;
+  --container-max: 1400px;
+  --card-radius: 22px;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .home {
   display: flex;
   flex-direction: column;
@@ -8,57 +16,38 @@
 
 .gridContainer {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* text wider than image */
-  grid-template-rows: auto auto;     /* 2 rows */
-  gap: 32px 28px;
+  grid-template-columns: var(--grid-columns);
+  grid-auto-rows: auto;
+  gap: var(--grid-gap-y) var(--grid-gap-x);
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 16px;
+  padding-bottom: 5vh;
+    align-items: start;
+
 }
 
-.homeContent {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
+.homeContent { grid-column: 1 / -1; }
 .imageCard {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-column: 2;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
 }
-
-.textCard {
-  grid-column: 1 / 3; /* FULL WIDTH */
-  grid-row: 2 / 3;
+.textCard { grid-column: 1 / -1; }
+.projectsContainer {
+  grid-column: 1 / -1;
+  margin-top: 40px;
 }
 
-
-.imageContainer {
-  margin: auto;
-}
-
-@media (max-width: 900px) {
-  .gridContainer {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-  }
-
-  .homeContent { grid-column: 1; grid-row: 1; }
-  .aboutCard:nth-of-type(1) { grid-column: 1; grid-row: 2; }
-  .aboutCard:nth-of-type(2) { grid-column: 1; grid-row: 3; }
-}
-
-
-/* ===================== SHARED GLASS CARD BASE ===================== */
 .homeContent,
-.aboutCard {
+.aboutCard,
+.projectsContainer {
   width: 100%;
   min-width: 0;
-  height: 100%;
-  border-radius: 22px;
+  border-radius: var(--card-radius);
   position: relative;
   overflow: hidden;
   transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
@@ -69,36 +58,54 @@
   transform: translateY(-6px) scale(1.02);
   filter: brightness(1.08);
 }
+.projectsContainer {
+  padding: 50px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(40,40,50,0.28),
+    rgba(20,20,30,0.22)
+  );
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: var(--glass-border);
 
-/* ===================== HOME CARD ===================== */
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.35),
+    inset 0 -4px 12px rgba(0,0,0,0.4),
+    0 25px 60px -20px rgba(0,0,0,0.55);
+}
+
 .homeContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 50px;
-
   background: linear-gradient(to right, rgba(0, 68, 255, 0.18), rgba(249, 116, 22, 0.22));
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
+  border: var(--glass-border);
   box-shadow:
     inset 0 1px 2px rgba(255, 255, 255, 0.5),
     inset 0 -4px 12px rgba(0, 0, 0, 0.25),
     0 25px 60px -20px rgba(0, 0, 0, 0.45);
-
   animation: fadeIn 0.8s ease forwards;
 }
 
 .homeContent::before,
-.aboutCard::before {
+.aboutCard::before,
+.projectsContainer::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(120deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1), rgba(255,255,255,0.35));
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.35)
+  );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -106,20 +113,29 @@
   opacity: 0.5;
 }
 
-/* ===================== HEADINGS ===================== */
 .homeContent h1,
 .homeContent h2 {
   margin: 0;
   color: white;
-  opacity: 0;
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  opacity: 0;
 }
 
-.homeContent h1 { font-size: 4rem; animation: fadeInLeft 0.8s ease forwards; }
-.homeContent h2 { font-size: 3rem; animation: fadeInRight 0.8s ease forwards; }
+.homeContent h1 {
+  font-size: 4rem;
+  animation: fadeInLeft 0.8s ease forwards;
+}
 
-/* ===================== BUTTONS ===================== */
-.buttonContainer { display: flex; gap: 15px; margin: 20px 0; }
+.homeContent h2 {
+  font-size: 3rem;
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
 
 .moreButton,
 .LinkedIn {
@@ -135,32 +151,66 @@
   text-decoration: none;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.25);
+  border: var(--glass-border);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.4),
+    inset 0 -2px 4px rgba(0,0,0,0.25),
+    0 4px 12px rgba(0,0,0,0.25);
 }
 
-.LinkedIn { height: 50px; }
-.LinkedIn:hover { transform: translateY(-5px); background: rgba(255,255,255,0.18); color: white; }
-.moreButton:hover { background: rgba(255,255,255,0.18); box-shadow: inset 0 1px 3px rgba(255,255,255,0.5), 0 8px 20px rgba(0,0,0,0.35); }
+.moreButton:hover {
+  background: rgba(255,255,255,0.18);
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,0.5),
+    0 8px 20px rgba(0,0,0,0.35);
+}
 
-/* ===================== SKILLS ===================== */
-.skillsContainer { display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 20px 0 10px; }
-.skillsContainer h2 { color: white; font-size: 1.5rem; opacity: 0; animation: fadeInLeft 0.8s ease forwards 0.4s; }
+.LinkedIn {
+  height: 50px;
+}
 
-.skillsIcons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+.LinkedIn:hover {
+  transform: translateY(-15px);
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0 10px;
+}
+
+.skillsContainer h2 {
+  color: white;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease forwards 0.4s;
+}
+
+.skillsIcons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
 .skillsIcons img {
   width: 50px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards 0.6s;
-  transition: transform 0.3s ease;
   padding: 6px;
   border-radius: 10px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 0.6s;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
-.skillsIcons img:hover { transform: scale(1.12); background: rgba(255,255,255,0.12); }
 
-/* ===================== ABOUT SECTION ===================== */
+.skillsIcons img:hover {
+  transform: scale(1.12);
+  background: rgba(255,255,255,0.12);
+}
+
 .about {
   display: flex;
   flex-direction: column;
@@ -178,44 +228,45 @@
   backdrop-filter: blur(12px) saturate(160%);
   padding: 1.2rem 2.5rem;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: var(--glass-border);
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
 }
 
-/* ABOUT CARD */
 .aboutCard {
   display: flex;
   align-items: center;
   gap: 36px;
   padding: 50px;
-
   background: linear-gradient(to bottom right, rgba(40,40,50,0.28), rgba(20,20,30,0.22));
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255,255,255,0.18);
-
+  border: var(--glass-border);
   box-shadow:
     inset 0 1px 2px rgba(255,255,255,0.35),
     inset 0 -4px 12px rgba(0,0,0,0.4),
     0 25px 60px -20px rgba(0,0,0,0.55);
-
   animation: fadeIn 1.3s ease-out forwards;
 }
 
-.imageContainer { flex: 0 0 clamp(140px, 22%, 220px); }
+.imageContainer {
+  flex: 0 0 clamp(140px, 22%, 220px);
+  margin: auto;
+}
+
 .imageContainer img {
-  justify-content: center;
-  align-items: center;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 10%;
   border: 3px solid rgba(255,255,255,0.22);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.imageContainer img:hover { transform: scale(1.07); box-shadow: 0 16px 45px rgba(0,0,0,0.6); }
 
-/* TEXT FIX */
+.imageContainer img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.6);
+}
+
 .aboutText {
   flex: 1;
   min-width: 0;
@@ -226,24 +277,46 @@
   text-shadow: 0 1px 6px rgba(0,0,0,0.7);
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 860px) {
-  .aboutCard { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .imageContainer { width: 160px; }
-  .aboutText { text-align: center; }
+@media (max-width: 900px) {
+  :root {
+    --grid-columns: 1fr;
+  }
+
+  .imageCard,
+  .homeContent,
+  .textCard,
+  .projectsContainer {
+    grid-column: 1;
+  }
+
+  .aboutCard {
+    flex-direction: column;
+    padding: 40px 28px;
+    text-align: center;
+  }
+
+  .aboutText {
+    text-align: center;
+  }
 }
 
-@media (max-width: 480px) {
-  .about { padding: 40px 16px; }
-  .aboutCard { padding: 32px 20px; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===================== ANIMATIONS ===================== */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: translateY(0);} }
-@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-60px);} to { opacity: 1; transform: translateX(0);} }
-@keyframes fadeInRight { from { opacity: 0; transform: translateX(60px);} to { opacity: 1; transform: translateX(0);} }
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 @keyframes buttonPopup {
-  0% { opacity: 0; transform: translateY(60px) scale(0.95);}
-  60% { opacity: 1; transform: translateY(-8px) scale(1.05);}
-  100% { opacity: 1; transform: translateY(0) scale(1);}
+  0% { opacity: 0; transform: translateY(60px) scale(0.95); }
+  60% { opacity: 1; transform: translateY(-8px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }

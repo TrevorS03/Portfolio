@@ -21,11 +21,6 @@ const NavBar = () => {
           </Link>
         </li>
         <li className={Styles.navItem}>
-          <Link href='/pages/projects' className={Styles.navLink}>
-            Projects
-          </Link>
-        </li>
-        <li className={Styles.navItem}>
           <Link href='/pages/resume' className={Styles.navLink}>
             Resume
           </Link>

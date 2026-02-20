@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Styles from './page.module.css'
 import Image from 'next/image'
+import ProjectViewer from '../../Components/ProjectsViewer/ProjectViewer'
 
 export default function HomePage() {
   return (
@@ -68,18 +69,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className={`${Styles.imageContainer} ${Styles.aboutCard}`}>
-            <div className={Styles.imageCard}>
-              <Image
-                src='/pictureofme.png' // Path to your image file
-                alt='Profile picture'
-                width={260}
-                height={260}
-                priority // good for above-the-fold image
-              />
-            </div>
+          <div className={Styles.projectsContainer}>
+            <ProjectViewer />
           </div>
           <div className={`${Styles.textCard} ${Styles.aboutCard}`}>
+            <Image
+              src='/pictureofme.png' // Path to your image file
+              alt='Profile picture'
+              width={260}
+              height={260}
+              priority // good for above-the-fold image
+            />
             <p className={Styles.aboutText}>
               I am a 22 year old developer from the United States. I have been programming
               since I was in middle school. I am passionate about all things tech. Whether
