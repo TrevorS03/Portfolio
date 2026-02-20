@@ -23,7 +23,7 @@ export default function Home() {
   }, [router]) // Dependency array includes router to ensure the effect runs when router is ready
 
   return (
-    <div>
+    <div id='root'>
       <p>Redirecting to Home...</p>
     </div>
   )

@@ -5,7 +5,7 @@ import ProjectViewer from '../../Components/ProjectsViewer/ProjectViewer'
 
 export default function HomePage() {
   return (
-    <div>
+    <div id='root'>
       <section id='home' className={Styles.home}>
         <div className={Styles.gridContainer}>
           <div className={Styles.homeContent}>
