@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Styles from './page.module.css'
-import Image from 'next/image'
+import './globals.css'
 import ProjectViewer from '../../Components/ProjectsViewer/ProjectViewer'
 import Skills from '../../Components/Skills/Skills'
 
