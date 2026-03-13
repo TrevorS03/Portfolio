@@ -13,7 +13,7 @@ const NavBar = () => {
       {/* Use semantic <nav> */}
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <Link href='/pages/' className={styles.navLink}>
+          <Link href='/' className={styles.navLink}>
             Home
           </Link>
         </li>
