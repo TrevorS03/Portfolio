@@ -77,13 +77,15 @@ body {
   padding: 0; /* Remove default padding */
   font-family: 'Jersey 20', sans-serif; /* Use the imported font */
   color: var(--foreground);
-  
   line-height: 1.5;
-}
-
-body {
-  color: var(--foreground);
-  padding-top: 60px; /* Add padding equal to the navbar's height */
+    color: var(--foreground);
+background: radial-gradient(
+  ellipse at 40% 50%,
+  rgba(0, 255, 200, 0.12) 0%,     /* cyan glow */
+  rgba(180, 0, 255, 0.18) 35%,    /* magenta */
+  rgba(255, 80, 0, 0.10) 60%,     /* orange accent */
+  rgba(10, 20, 60, 0.4) 100%
+);
 }
 
 body::-webkit-scrollbar {

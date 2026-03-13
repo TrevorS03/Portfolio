@@ -1,16 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-images: {
-    dangerouslyAllowSVG: true, // Enable SVG support
+  images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'placehold.co',
-        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
         pathname: '/**',
       },
     ],
   },
-};
-export default nextConfig;
+}
+
+export default nextConfig
