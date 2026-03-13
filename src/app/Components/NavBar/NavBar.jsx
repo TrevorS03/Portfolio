@@ -4,6 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './NavBar.module.css'
 
+// No need for useRouter here — Link handles everything
+
 const NavBar = () => {
   return (
     <nav className={styles.nav}>
@@ -11,17 +13,17 @@ const NavBar = () => {
       {/* Use semantic <nav> */}
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <Link href='pages/' className={styles.navLink}>
+          <Link href='/pages/' className={styles.navLink}>
             Home
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href='pages/about' className={styles.navLink}>
+          <Link href='/pages/about' className={styles.navLink}>
             About
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href='pages/resume' className={styles.navLink}>
+          <Link href='/pages/resume' className={styles.navLink}>
             Resume
           </Link>
         </li>
