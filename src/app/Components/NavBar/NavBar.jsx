@@ -11,17 +11,17 @@ const NavBar = () => {
       {/* Use semantic <nav> */}
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <Link href='/' className={styles.navLink}>
+          <Link href='pages/' className={styles.navLink}>
             Home
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href='/about' className={styles.navLink}>
+          <Link href='pages/about' className={styles.navLink}>
             About
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href='/resume' className={styles.navLink}>
+          <Link href='pages/resume' className={styles.navLink}>
             Resume
           </Link>
         </li>
