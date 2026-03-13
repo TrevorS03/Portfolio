@@ -1,37 +1,32 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link' // Import Link for navigation
-import { useRouter } from 'next/navigation'
-import Styles from './NavBar.module.css'
+import Link from 'next/link'
+import styles from './NavBar.module.css'
 
 const NavBar = () => {
-  const router = useRouter()
-
-  const handleClick = (page) => {
-    router.push(`/pages/${page}`)
-  }
-
   return (
-    <div className={Styles.nav}>
-      <ul className={Styles.navList}>
-        <li className={Styles.navItem}>
-          <Link href='/pages/home' className={Styles.navLink}>
+    <nav className={styles.nav}>
+      {' '}
+      {/* Use semantic <nav> */}
+      <ul className={styles.navList}>
+        <li className={styles.navItem}>
+          <Link href='/' className={styles.navLink}>
             Home
           </Link>
         </li>
-        <li className={Styles.navItem}>
-          <Link href='/pages/about' className={Styles.navLink}>
+        <li className={styles.navItem}>
+          <Link href='/about' className={styles.navLink}>
             About
           </Link>
         </li>
-        <li className={Styles.navItem}>
-          <Link href='/pages/resume' className={Styles.navLink}>
+        <li className={styles.navItem}>
+          <Link href='/resume' className={styles.navLink}>
             Resume
           </Link>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 
