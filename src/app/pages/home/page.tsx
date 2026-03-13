@@ -10,8 +10,8 @@ export default function HomePage() {
       <section id='home' className={Styles.home}>
         <div className={Styles.gridContainer}>
           <div className={Styles.homeContent}>
-            <h1>Hello, I'm Trevor Small.</h1>
-            <h2>Software Developer, Game Developer, and Tech Enthusiast</h2>
+            <h1>{`Hello, I'm Trevor Small.`}</h1>
+            <h2>{`Software Developer, Game Developer, and Tech Enthusiast`}</h2>
             <div className={Styles.buttonContainer}>
               <Link href='/pages/about' className={Styles.moreButton}>
                 About Me
