@@ -20,10 +20,12 @@ export default function RootLayout({
           rel='stylesheet'
         />
       </head>
-      <body>
-        <NavBar />
-        {children}
-      </body>
+      <div className='appLayout'>
+        <body className='mainContent'>
+          <NavBar />
+          {children}
+        </body>
+      </div>
     </html>
   )
 }

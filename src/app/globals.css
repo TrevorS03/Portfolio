@@ -16,6 +16,14 @@
     --foreground: #ededed;
   }
 }
+.appLayout {
+  display: flex;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+}
 
 html {
   scroll-behavior: smooth;
@@ -43,7 +51,7 @@ html::before {
   background-repeat: no-repeat;
 
   filter: blur(5px) brightness(0.6);
-  transform: scale(1.1); /* prevents edge cutoff from blur */
+  transform: scale(1.1);
 }
 
 body::before {
@@ -103,4 +111,14 @@ body::-webkit-scrollbar-thumb {
         transform: translateY(0);
     }
     
+}
+
+.appLayout {
+  display: flex;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  justify-content: center; 
 }
